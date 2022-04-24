@@ -1,29 +1,27 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
-import {Component} from "react";
+import Home from './Home';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Players from "./players/Players";
+import AppNavbar from "./AppNavbar";
+import DraftOverview from "./draft/DraftOverview";
+//import ClientList from './ClientList';
+//import ClientEdit from "./ClientEdit";
+//                    <Route path='/clients/:id' component={ClientEdit}/>
 
 class App extends Component {
-    state = {
-        players: []
-    };
-
-    async componentDidMount() {
-        const response = await fetch('/players');
-        const body = await response.json();
-        this.setState({players: body});
-    }
-
     render() {
-        const players = this.state.players;
         return (
-            <div className="App">
-                <h2>Players</h2>
-                {players && players.length > 0 &&
-                    <Players players={players}/>
-                }
-            </div>
-        );
+
+            <BrowserRouter>
+                <AppNavbar/>
+                <Switch>
+                    <Route path='/' exact={true} component={Home}/>
+                    <Route path='/players' exact={true} component={Players}/>
+                    <Route path='/drafts' exact={true} component={DraftOverview}/>
+                </Switch>
+            </BrowserRouter>
+        )
     }
 }
 

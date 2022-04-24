@@ -39,6 +39,12 @@ public class PlayerController {
                 new PlayerDto(player));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePlayer(@PathVariable("id") Long id) {
+        playerRepository.deleteById(id);
+        return ResponseEntity.ok("{}");
+    }
+
     private static class NewPlayerDto {
         public String name;
 
@@ -51,7 +57,7 @@ public class PlayerController {
         }
     }
 
-    private static class PlayerDto {
+    public static class PlayerDto {
         public Long id;
         public String name;
 
