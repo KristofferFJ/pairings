@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Players from "./players/Players";
 import AppNavbar from "./AppNavbar";
 import DraftOverview from "./draft/DraftOverview";
+import Draft from "./draft/Draft";
 //import ClientList from './ClientList';
 //import ClientEdit from "./ClientEdit";
 //                    <Route path='/clients/:id' component={ClientEdit}/>
@@ -19,6 +20,7 @@ class App extends Component {
                     <Route path='/' exact={true} component={Home}/>
                     <Route path='/players' exact={true} component={Players}/>
                     <Route path='/drafts' exact={true} component={DraftOverview}/>
+                    <Route path='/drafts/:draftId/standings' exact={true} component={Draft}/>
                 </Switch>
             </BrowserRouter>
         )

@@ -62,7 +62,7 @@ public class PlayerController {
         public String name;
 
         public PlayerDto(Player player) {
-            this.id = player.getId();
+            this.id = player.getPlayerId();
             this.name = player.getName();
         }
 

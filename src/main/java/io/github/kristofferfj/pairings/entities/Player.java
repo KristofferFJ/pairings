@@ -10,7 +10,7 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long playerId;
 
     private String name;
 
@@ -21,8 +21,8 @@ public class Player {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public Long getPlayerId() {
+        return playerId;
     }
 
     public String getName() {

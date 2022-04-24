@@ -12,6 +12,7 @@ class DraftOverview extends Component {
         this.create = this.create.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.fetchDrafts = this.fetchDrafts.bind(this);
+        this.handleRowClick = this.handleRowClick.bind(this);
     }
 
     componentDidMount() {
@@ -44,9 +45,13 @@ class DraftOverview extends Component {
         this.setState({[event.target.name]: event.target.value});
     }
 
+    handleRowClick(draftId) {
+        this.props.history.push('/drafts/' + draftId + '/standings');
+    }
+
     render() {
         const draftList = this.state.drafts.map(draft => {
-            return <tr key={draft.id}>
+            return <tr key={draft.id} onClick={() => this.handleRowClick(draft.id)}>
                 <td style={{whiteSpace: 'nowrap'}}>{draft.id}</td>
                 <td style={{whiteSpace: 'nowrap'}}>{draft.name}</td>
                 <td style={{whiteSpace: 'nowrap'}}>{draft.players.map(
@@ -68,7 +73,8 @@ class DraftOverview extends Component {
                     {draftList}
                     </tbody>
                 </table>
-                <form>
+                <h3>Tilføj ny draft</h3>
+                <form style={{marginTop: "10px", marginLeft: "10px"}}>
                     <label>
                         Navn:
                         <input type="text" name={"newDraftName"} value={this.state.newDraftName} onInput={this.handleChange}/>

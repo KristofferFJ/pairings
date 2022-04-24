@@ -1,7 +1,6 @@
 package io.github.kristofferfj.pairings.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Draft {
@@ -15,16 +14,16 @@ public class Draft {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long draftId;
 
     private String name;
 
-    public Long getId() {
-        return id;
+    public Long getDraftId() {
+        return draftId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDraftId(Long id) {
+        this.draftId = id;
     }
 
     public String getName() {

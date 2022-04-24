@@ -16,8 +16,8 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     @Query(value = "" +
             "SELECT * FROM PLAYER " +
-            "WHERE ID IN " +
-            "(SELECT PLAYER FROM PLAYER_DRAFT_MAP WHERE DRAFT = :draftId)",
+            "WHERE PLAYER_ID IN " +
+            "(SELECT PLAYER_ID FROM PLAYER_DRAFT_MAP WHERE DRAFT_ID = :draftId)",
             nativeQuery = true)
     List<Player> findPlayersInDraft(@Param("draftId") Long draftId);
 }
